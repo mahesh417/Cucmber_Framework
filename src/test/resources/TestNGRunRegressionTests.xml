@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Run Test Cukes" parallel="tests" verbose="1"
+	configfailurepolicy="continue" thread-count="1">
+
+	<listeners>
+		<!-- This TestNG listener takes care of setting up and tearing down the 
+			WebDriver, and it also changes test names in the final TestNG HTML report. -->
+		<listener class-name="com.web.cucumber.framework.WebDriverListener" />
+	</listeners>
+
+	<!-- Possible Parameters and Values -->
+	<!-- ExecutionMode = LOCAL,GRID,TESTOBJECT -->
+	<!-- BrowserName = CHROME,FIREFOX,INTERNET_EXPLORER,EDGE -->
+	<!-- BrowserVersion ="" (Applicable Only if ExecutionMode is GRID) -->
+	<!-- Platform =WINDOWS etc., (Applicable Only if ExecutionMode is GRID or Fastest Desktop) -->
+
+	<test name="Regression Tests">
+		<parameter name="ExecutionMode" value="LOCAL" />
+		<parameter name="BrowserName" value="CHROME" />
+		<classes>
+		
+		<!-- For Execution in Local machine this cucumber class should be called -->
+		
+	 		<class name="com.web.cucumber.runners.RunCucumberTestRegressionLocal" />
+	 		
+ 		<!-- For Execution in Remote machine this cucumber class should be called by uncommenting -->
+			
+			<!-- <class name="com.web.cucumber.runners.RunCucumberTestRegressionRemote" /> -->
+			
+		</classes>
+	</test>
+
+</suite>
